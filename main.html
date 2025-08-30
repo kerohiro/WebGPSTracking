@@ -26,18 +26,42 @@
                 // get location every 10 seconds
                 watchId = setInterval(() => {
                     navigator.geolocation.getCurrentPosition((pos) => {
-                        const data = {
-                            lat: pos.coords.latitude,
-                            lat: pos.coords.longitude,
-                            accuracy: pos.coords.accuracy,
-                            time: new Date().toISOString()
-                        };
-                        logs.push(data);
-                        console.log("Logged:", data);
-                    }, (err) => {
-                        console.error(err);
-                    });
+                        if(pos && pos.coords){
+                            const data = {
+                                lat: pos.coords.latitude || 0,
+                                lon: pos.coords.longitude || 0,
+                                accuracy: pos.coords.accuracy || null,
+                                time: new Date().toISOString()
+                            };
+                            logs.push(data);
+                            console.log("Logged:", data);
+                        }
+                    }, 
+                    (err) => console.error(err),
+                    {
+                        enableHighAccuracy: true, timeout: 10000, maximumAge:0
+                    }
+                );
                 }, 1000);
+            }
+
+            // stop logging
+            function stopLogging() {
+                if(watchId){
+                    clearInterval(watchId);
+                    watchId = null;
+                    document.getElementById("status").innerText = "Status: Not logging";
+                );
+                }, 1000);
+            }
+
+            // stop logging
+            function stopLogging() {
+                if(watchId){
+                    clearInterval(watchId);
+                    watchId = null;
+                    document.getElementById("status").innerText = "Status: Not logging";
+                }
             }
 
             // stop logging
