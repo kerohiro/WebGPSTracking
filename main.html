@@ -3,10 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <title>GPS + Gyro Logger</title>
-  <link rel="icon" href="manifest.json">
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="./manifest.json">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <link rel="apple-touch-icon" href="icon-512.png">
+  <link rel="apple-touch-icon" href="./image/icon-512.png">
+
 </head>
 <body>
   <h1>GPS + Gyro Logger</h1>
@@ -16,13 +19,15 @@
   <p id="status">Preparing...</p>
 
   <!-- Logger Script -->
-  <script src="logger.js">
-    if("serviceWorker" in navigator){
-        window.addEventListener("load",() => {
-            navigator.serviceWorker.register("./service-worker.js")
-            .then(reg => console.log("Service Worker registered",reg))
-            .catch(err => console.log("Service Worker registration failed", err));
-        });
+  <script src="./logger.js"></script>
+  <!-- script for Service Worker -->
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./service-worker.js")
+          .then(reg => console.log("Service Worker registered", reg))
+          .catch(err => console.log("Service Worker registration failed", err));
+      });
     }
   </script>
 </body>
