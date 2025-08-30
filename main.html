@@ -15,7 +15,7 @@
     let watchId = null;
     let logs = [];
 
-    // ログ開始
+    // Logging
     function startLogging() {
       document.getElementById("status").innerText = "Logging...";
       if (!navigator.geolocation) {
@@ -23,7 +23,7 @@
         return;
       }
 
-      // 10秒おきに現在地取得
+      // Get GPS data every 10 sec
       watchId = setInterval(() => {
         navigator.geolocation.getCurrentPosition((pos) => {
           const data = {
@@ -49,7 +49,7 @@
       }
     }
 
-    // CSVダウンロード
+    // Log download in csv format
     function downloadCSV() {
       if (logs.length === 0) {
         alert("No records");
