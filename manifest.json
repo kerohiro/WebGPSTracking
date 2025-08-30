@@ -1,7 +1,7 @@
 {
     "name": "GPS + Gyro Logger",
     "short_name": "GPSGyroLogger",
-    "start_url": "./index.html",
+    "start_url": "./main.html",
     "standalone": true,
     "background_color": "#ffffff",
     "theme_color": "#4CAF50",
